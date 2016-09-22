@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                Redux &amp; React-redux （一） | The terminator
+            </title>
+            <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    </head>
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            <div class="nav-wrapper" style="background-color:undefined">
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    The terminator
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                Home
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                Archive
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                About
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                RSS
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">Redux &amp; React-redux （一）</h1>
+
+          <section class="post-info">
+            <span class="post-date">2016/9/17</span>
+            
+            
+            <span class="post-tags">
+              <ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/redux-react/">redux react</a></li></ul>
+            </span>
+            
+          </section>
+
+          <section class="post-content">
+            <h2 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h2><h3 id="Redux-&#x7684;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;"><a href="#Redux-&#x7684;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;" class="headerlink" title="Redux &#x7684;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;"></a>Redux &#x7684;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;</h3><ul>
+<li><p><code>createStore</code> &#x521B;&#x5EFA;&#x4E00;&#x4E2A;Store(&#x6570;&#x636E;&#x5B58;&#x50A8;&#x5668;)&#xFF0C;&#x63D0;&#x4F9B;4&#x4E2A;&#x65B9;&#x6CD5;&#x6765;&#x64CD;&#x63A7;&#x6570;&#x636E;, &#x521B;&#x5EFA;&#x65F6;&#x63A5;&#x6536;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF1A; <code>reducer</code> &#x5FC5;&#x586B;&#x53C2;&#x6570;&#xFF0C;&#x8D1F;&#x8D23;&#x8FD4;&#x56DE;&#x4E0B;&#x4E00;&#x72B6;&#x6001;&#x6570;&#x636E;&#x7684;&#x51FD;&#x6570;&#xFF1B;<code>preloadedState</code> &#x4E0A;&#x4E00;&#x72B6;&#x6001;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5F53;&#x4F5C;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x4F20;&#x5165;, <code>enhancer</code> &#x539F;&#x7801;&#x4E2D;&#x5BF9;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x8FD9;&#x4E48;&#x5904;&#x7406;&#x7684; <code>return enhancer(createStore)(reducer, preloadedState)</code>&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x5BF9;createStore&#x81EA;&#x8EAB;&#x7684;&#x6269;&#x5C55;&#xFF0C;Redux &#x4E2D;&#x53EF;&#x4EE5;&#x7528; <code>applyMiddleware</code> &#x6765;&#x5B9E;&#x73B0;&#x6269;&#x5C55;&#x3002;</p>
+<ul>
+<li><p><code>subscribe</code> &#x8BA2;&#x9605;&#x4E8B;&#x4EF6;&#xFF0C;&#x6B64;&#x65B9;&#x6CD5;&#x63A5;&#x6536;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x76D1;&#x542C;dispatch &#x7684;&#x8C03;&#x5EA6;&#xFF0C;&#x5176;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">function subscribe(listener) {</div><div class="line">    if (typeof listener !== &apos;function&apos;) {</div><div class="line">      throw new Error(&apos;Expected listener to be a function.&apos;)</div><div class="line">    }</div><div class="line"></div><div class="line">    var isSubscribed = true</div><div class="line"></div><div class="line">    ensureCanMutateNextListeners()</div><div class="line">    nextListeners.push(listener)</div><div class="line"></div><div class="line">    return function unsubscribe() {</div><div class="line">      if (!isSubscribed) {</div><div class="line">        return</div><div class="line">      }</div><div class="line"></div><div class="line">      isSubscribed = false</div><div class="line"></div><div class="line">      ensureCanMutateNextListeners()</div><div class="line">      var index = nextListeners.indexOf(listener)</div><div class="line">      nextListeners.splice(index, 1)</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>  &#x5C06;&#x65B9;&#x6CD5;&#x6CE8;&#x518C;&#x5230;&#x4E8B;&#x4EF6;&#x5217;&#x8868;&#x4E2D;</p>
+</li>
+<li><p><code>dispatch</code> &#x8C03;&#x5EA6;&#x4E00;&#x4E2A; <code>action</code> &#xFF0C;&#x63A5;&#x6536;&#x53C2;&#x6570;&#x683C;&#x5F0F;<code>{type: ACTION_TYPE, data:&apos;&apos;}</code>&#xFF0C;&#x8C03;&#x5EA6;&#x5177;&#x4F53;&#x4EE3;&#x7801;&#xFF1A;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">try {</div><div class="line">  isDispatching = true</div><div class="line">  currentState = currentReducer(currentState, action)</div><div class="line">} finally {</div><div class="line">  isDispatching = false</div><div class="line">}</div><div class="line"></div><div class="line">var listeners = currentListeners = nextListeners</div><div class="line">for (var i = 0; i &lt; listeners.length; i++) {</div><div class="line">  listeners[i]()</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>  &#x5148;&#x662F;&#x901A;&#x8FC7;&#x8C03;&#x7528;&#x521D;&#x59CB;&#x5316;&#x662F;&#x7684;reducer&#x65B9;&#x6CD5;&#xFF0C;&#x901A;&#x8FC7;reduer&#x65B9;&#x6CD5;&#x83B7;&#x53D6;&#x4E0B;&#x4E00;&#x72B6;&#x6001;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x4E14;&#x4FDD;&#x5B58;&#x5728;&#x5168;&#x5C40;&#x53D8;&#x91CF;<code>currentState</code>&#x4E2D;&#xFF0C; &#x7D27;&#x63A5;&#x7740;&#x901A;&#x77E5;<code>subscribe</code>&#x6CE8;&#x518C;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+</li>
+<li><p><code>getState</code> &#x6E90;&#x7801;&#x5982;&#x4E0B;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function getState() {</div><div class="line">    return currentState</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>  &#x8FD4;&#x56DE;&#x5168;&#x5C40;&#x4E2D;<code>currentState</code>&#x4FDD;&#x5B58;&#x7684;state&#x6570;&#x636E;</p>
+</li>
+<li><p><code>replaceReducer</code> &#x66FF;&#x6362;store&#x4E2D;&#x7684;reducer,&#x6E90;&#x7801;&#x5982;&#x4E0B;:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function replaceReducer(nextReducer) {</div><div class="line">    if (typeof nextReducer !== &apos;function&apos;) {</div><div class="line">      throw new Error(&apos;Expected the nextReducer to be a function.&apos;)</div><div class="line">    }</div><div class="line"></div><div class="line">    currentReducer = nextReducer</div><div class="line">    dispatch({ type: ActionTypes.INIT })</div><div class="line">}</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><code>combineReducers</code> &#x662F;reducer&#x7684;&#x4E00;&#x4E2A;&#x96C6;&#x5408;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x8BF4;&#x662F;&#x5BF9;&#x591A;&#x4E2A;rducer&#x7684;&#x5C01;&#x88C5;, &#x4EE5;&#x4E0B;&#x662F;<code>combineReducers</code>&#x7684;&#x5B9E;&#x73B0;&#xFF1A;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">export default function combineReducers(reducers) {</div><div class="line">  var reducerKeys = Object.keys(reducers)</div><div class="line">  var finalReducers = {}</div><div class="line">  for (var i = 0; i &lt; reducerKeys.length; i++) {</div><div class="line">    var key = reducerKeys[i]</div><div class="line"></div><div class="line">    if (process.env.NODE_ENV !== &apos;production&apos;) {</div><div class="line">      if (typeof reducers[key] === &apos;undefined&apos;) {</div><div class="line">        warning(`No reducer provided for key &quot;${key}&quot;`)</div><div class="line">      }</div><div class="line">    }</div><div class="line"></div><div class="line">    if (typeof reducers[key] === &apos;function&apos;) {</div><div class="line">      finalReducers[key] = reducers[key]</div><div class="line">    }</div><div class="line">  }</div><div class="line">  var finalReducerKeys = Object.keys(finalReducers)</div></pre></td></tr></table></figure>
+<p>  &#x4E0A;&#x9762;&#x662F; combineReducers &#x5BF9;&#x591A;&#x4E2A;reducer&#x7684;&#x5904;&#x7406;&#xFF0C;&#x5B58;&#x5230;&#x540D;&#x4E3A;<code>finalReducerKeys</code>&#x7684;&#x53D8;&#x91CF;&#x4E2D;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4EC0;&#x4E48;&#x3002;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">return function combination(state = {}, action) {</div><div class="line">    if (sanityError) {</div><div class="line">      throw sanityError</div><div class="line">    }</div><div class="line"></div><div class="line">    if (process.env.NODE_ENV !== &apos;production&apos;) {</div><div class="line">      var warningMessage = getUnexpectedStateShapeWarningMessage(state, finalReducers, action, unexpectedKeyCache)</div><div class="line">      if (warningMessage) {</div><div class="line">        warning(warningMessage)</div><div class="line">      }</div><div class="line">    }</div><div class="line"></div><div class="line">    var hasChanged = false</div><div class="line">    var nextState = {}</div><div class="line">    for (var i = 0; i &lt; finalReducerKeys.length; i++) {</div><div class="line">      var key = finalReducerKeys[i]</div><div class="line">      var reducer = finalReducers[key]</div><div class="line">      var previousStateForKey = state[key]</div><div class="line">      var nextStateForKey = reducer(previousStateForKey, action)</div><div class="line">      if (typeof nextStateForKey === &apos;undefined&apos;) {</div><div class="line">        var errorMessage = getUndefinedStateErrorMessage(key, action)</div><div class="line">        throw new Error(errorMessage)</div><div class="line">      }</div><div class="line">      nextState[key] = nextStateForKey</div><div class="line">      hasChanged = hasChanged || nextStateForKey !== previousStateForKey</div><div class="line">    }</div><div class="line">    return hasChanged ? nextState : state</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>  combineReducers&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;function&#xFF0C;&#x5728;&#x8C03;&#x7528;createStore&#x65F6;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4F5C;&#x4E3A;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x8C03;&#x7528;dispatch&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;combination&#x65B9;&#x6CD5;&#x4F9D;&#x6B21;&#x8C03;&#x7528;&#x6BCF;&#x4E2A;<code>reducer</code>&#x3002;</p>
+</li>
+</ul>
+<ul>
+<li><p><code>bindActionCreators</code> &#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x5BF9;<code>store.dispatch</code>&#x8C03;&#x7528;&#x7684;&#x4E00;&#x79CD;&#x59D4;&#x6258;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x5148;&#x770B;&#x4E00;&#x4E0B;&#x7528;&#x6CD5;&#xFF1A;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">import { bindActionCreators } from &apos;redux&apos;;</div><div class="line">let actions = {</div><div class="line">      addItem: (text) =&gt; {</div><div class="line">        type: types.ADD_ITEM,</div><div class="line">        text: text</div><div class="line">      },</div><div class="line">      deleteItem: (id) =&gt; {</div><div class="line">        type: types.DELETE_ITEM,</div><div class="line">        id: id</div><div class="line">      }</div><div class="line">    };</div><div class="line"></div><div class="line">var dispatchActions = bindActionCreators(actions, store.dispatch);</div><div class="line">console.log(dispatchActions);</div><div class="line">dispatchActions = {</div><div class="line">    addItem: (...args) =&gt; {dispatch(actions.addItem(...args))},</div><div class="line">    deleteItem: (...args) =&gt; {dispatch(actions.deleteItem(...args))}</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>  &#x8FD9;&#x6837;&#x76F4;&#x63A5;&#x8C03;&#x7528; <code>dispatchActions.addItem(&apos;texttext&apos;)</code>&#x5C31;&#x53EF;&#x4EE5;&#x89E6;&#x53D1; <code>store.dispatch</code></p>
+</li>
+<li><p><code>applyMiddleware</code> &#x4E2A;&#x4EBA;&#x7406;&#x89E3;&#x662F;&#x5728; <code>store.dispatch</code> &#x6267;&#x884C;&#x4E4B;&#x524D;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x8FC7;&#x7A0B;&#xFF0C;&#x53EF;&#x4EE5;&#x5EF6;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x5F02;&#x6B65;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x5904;&#x7406;&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x770B;&#x4E0B;&#x7ECF;&#x5178;Middleware&#x5B9E;&#x73B0;<code>redux-thunk</code>&#x662F;&#x600E;&#x4E48;&#x7528;&#x7684;&#xFF1A;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//&#x6269;&#x5C55;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x8C03;&#x7528;dispatch &#x662F;&#x8FD9;&#x4E48;&#x7528;&#x7684;</div><div class="line">function addItem(text) {</div><div class="line">  return {</div><div class="line">    type: &apos;ADD_ITEM&apos;,</div><div class="line">    text</div><div class="line">  };</div><div class="line">}</div><div class="line"></div><div class="line">store.dispatch(addItem());</div></pre></td></tr></table></figure>
+<p>  &#x6269;&#x5C55;&#x540E;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">//&#x5F15;&#x5165;&#x5305;</div><div class="line">import thunk from &apos;redux-thunk&apos;;</div><div class="line">import { createStore, applyMiddleware} from &apos;redux&apos;.</div><div class="line">const store = createStore(</div><div class="line">  rootReducer,</div><div class="line">  applyMiddleware(thunk)</div><div class="line">);</div><div class="line"></div><div class="line">//&#x6DFB;&#x52A0;&#x4E00;&#x884C;&#x5E76;&#x4E14;&#x5728;&#x540E;&#x7AEF;&#x5904;&#x7406;&#x5B8C;&#x4E4B;&#x540E;&#x89E6;&#x53D1;dispatch</div><div class="line">function addItem(text) {</div><div class="line">  return (dispatch, getState) =&gt; {</div><div class="line">        $.ajax({</div><div class="line">            url:url,</div><div class="line">            success: function(data) {</div><div class="line">                dispatch({</div><div class="line">                    type: &apos;ADD_ITEM&apos;,</div><div class="line">                    data.text </div><div class="line">                })</div><div class="line">            }</div><div class="line">        })</div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line">store.dispatch(addItem());</div></pre></td></tr></table></figure>
+<p>  &#x4E0A;&#x9762;&#x662F;<code>thunk</code>&#x548C;<code>applyMiddleware</code>&#x7EC4;&#x4EF6;&#x6700;&#x7B80;&#x5355;&#x7684;&#x7528;&#x6CD5;&#xFF0C; &#x4F46;&#x5982;&#x679C;&#x8981;&#x81EA;&#x5199;&#x4E00;&#x4E2A;<code>applyMiddleware</code>,&#x8981;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x770B;&#x4E0B;<code>applyMiddleware</code> &#x6E90;&#x7801;&#xFF0C;&#x7B80;&#x8981;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x4F20;&#x5165;&#x4EC0;&#x4E48;&#xFF1A;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">export default function applyMiddleware(...middlewares) {</div><div class="line">  return (createStore) =&gt; (reducer, preloadedState, enhancer) =&gt; {</div><div class="line">    var store = createStore(reducer, preloadedState, enhancer)</div><div class="line">    var dispatch = store.dispatch</div><div class="line">    var chain = []</div><div class="line"></div><div class="line">    var middlewareAPI = {</div><div class="line">      getState: store.getState,</div><div class="line">      dispatch: (action) =&gt; dispatch(action)</div><div class="line">    }</div><div class="line">    chain = middlewares.map(middleware =&gt; middleware(middlewareAPI))</div><div class="line">    dispatch = compose(...chain)(store.dispatch)</div><div class="line"></div><div class="line">    return {</div><div class="line">      ...store,</div><div class="line">      dispatch</div><div class="line">    }</div><div class="line">  }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>  1&#x3001; <code>middlewares</code> &#x53EF;&#x4EE5;&#x4F20;&#x5165;&#x591A;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;&#x4E0B;&#x9762;&#x8DDF;&#x636E;&#x6E90;&#x7801;&#x63A8;&#x7406;&#x4E00;&#x4E0B;&#x4E2D;&#x95F4;&#x4EF6;&#x5E94;&#x8BE5;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#xFF1A;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//&#x5904;&#x7406;&#x591A;&#x4E2A;middleware</div><div class="line">chain = middlewares.map(middleware =&gt; middleware(middlewareAPI))</div></pre></td></tr></table></figure>
+<p>  &#x8FD9;&#x91CC;&#x5FAA;&#x73AF;&#x8C03;&#x7528;&#x6BCF;&#x4E2A;function, &#x4F20;&#x5165;&#x7684;&#x5FC5;&#x987B;&#x662F;&#x4E00;&#x4E2A;<code>function</code>&#xFF0C;&#x5982;&#x4E0B;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const middleware = function(middlewareAPI) {</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+<p>  2&#x3001;&#x63A5;&#x7740;&#x628A;<code>chain</code>&#x4F20;&#x5165;<code>compose</code>&#x4E2D;&#xFF0C;<code>compose</code>&#x4E5F;&#x662F;&#x6211;&#x4EEC;&#x4E0B;&#x9762;&#x8981;&#x8BA8;&#x8BBA;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;, &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x63A5;&#x6536;&#x591A;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x4ECE;&#x53F3;&#x5411;&#x5DE6;&#x4F9D;&#x6B21;&#x8C03;&#x7528;&#xFF0C;&#x524D;&#x4E14;&#x628A;&#x524D;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x505A;&#x4E3A;&#x4E0B;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x7684;<code>middleware</code>&#x5C31;&#x5FC5;&#x987B;&#x5F97;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x7EE7;&#x7EED;&#x5982;&#x4E0B;&#xFF1A;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const middleware = function(middlewareAPI) {</div><div class="line">    return function(nextReturn) {</div><div class="line"></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>  3&#x3001;&#x5206;&#x6790;&#x4E00;&#x4E0B;<code>compose</code> &#x8FD4;&#x56DE;&#x7684;&#x51FD;&#x6570;&#x6E90;&#x7801;&#xFF1A;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">return (...args) =&gt; rest.reduceRight((composed, f) =&gt; f(composed), last(...args))</div></pre></td></tr></table></figure>
+<p>  <code>rest</code> &#x4E3A;&#x591A;&#x4E2A;middleware&#x7684;&#x6570;&#x7EC4;&#x96C6;&#x5408;&#xFF0C;&#x50CF;&#x8FD9;&#x6837;&#x5B50;&#x7684;<code>[fun, fun]</code>, &#x5728;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x8FD4;&#x56DE;&#x7684;&#x51FD;&#x6570;&#x65F6;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x5373;&#x8FD9;&#x91CC;&#x7684;<code>args</code> &#x5C31;&#x662F;<code>store.dispatch</code>&#xFF1B;&#x518D;&#x770B;<code>(composed, f) =&gt; f(composed)</code> &#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;&#x4E0A;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x7684;&#x503C;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x4E3A;&#x5F53;&#x524D;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x3002;&#x8FD9;&#x65F6;&#x6211;&#x4EEC;&#x7684;<code>middleware</code>&#x5C31;&#x8981;&#x8FD4;&#x56DE;&#x70B9;&#x4EC0;&#x4E48;&#xFF0C;&#x53EF;&#x80FD;&#x5C31;&#x8981;&#x8FD9;&#x6837;&#x53BB;&#x9002;&#x914D;&#x5199;&#x4E86;&#x3002;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const middleware = function(middlewareAPI) {</div><div class="line">    return function(store.dispatch | &#x4E0A;&#x4E00;&#x4E2A;middleware&#x7684;&#x8FD4;&#x56DE;) {</div><div class="line">        return //&#x8FD9;&#x91CC;&#x8981;return&#x4EC0;&#x4E48;&#x4E86;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>  &#x4F9D;&#x6B21;&#x8C03;&#x7528;&#xFF0C;&#x6700;&#x7EC8;<code>compose</code>&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;<code>middleware</code>&#x7684;&#x8FD4;&#x56DE;&#x503C;</p>
+<p>  4&#x3001;&#x518D;&#x56DE;&#x8FC7;&#x5934;&#x770B;&#x4E00;&#x4E0B;<code>applyMiddleware</code> &#x7684;&#x8FD4;&#x56DE;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dispatch = compose(...chain)(store.dispatch)</div><div class="line">return {</div><div class="line">  ...store,</div><div class="line">  dispatch</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>  &#x8FD9;&#x91CC;<code>dispatch</code>&#x5C31;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;<code>middleware</code>&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x53D8;&#x5411;&#x66FF;&#x6362;&#x4E86;<code>createStore</code>&#x4E2D;&#x7684;<code>dispatch</code>&#x65B9;&#x6CD5;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;function , &#x90A3;&#x5728;&#x8C03;&#x7528; <code>store.dispatch()</code> &#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x62A5;&#x9519;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;<code>middleware</code>&#x5C31;&#x5F97;&#x8FD9;&#x6837;&#x5199;&#x4E86;&#x3002;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">const middleware = function(middlewareAPI) {</div><div class="line">    return function(store.dispatch | next) {</div><div class="line">        return function(action) {</div><div class="line"></div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>  &#x8FD9;&#x6837;&#x6BCF;&#x6B21;&#x8C03;&#x7528;<code>store.dispatch()</code> &#x65F6;&#x5C31;&#x4F1A;&#x8C03;&#x7528;&#x5230;&#x6211;&#x4EEC;&#x8FD4;&#x56DE;&#x7684;<code>function(action)</code> &#x4E2D;.</p>
+<p>  5&#x3001;&#x53CD;&#x6B63;&#x662F;&#x6709;&#x70B9;&#x7ED5;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E0B;<code>redux-thunk</code>&#x7684;&#x5B9E;&#x73B0;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">function createThunkMiddleware(extraArgument) {</div><div class="line">  return function (_ref) {</div><div class="line">    var dispatch = _ref.dispatch;</div><div class="line">    var getState = _ref.getState;</div><div class="line">    return function (next) {</div><div class="line">      return function (action) {</div><div class="line">        if (typeof action === &apos;function&apos;) {</div><div class="line">          return action(dispatch, getState, extraArgument);</div><div class="line">        }</div><div class="line"></div><div class="line">        return next(action);</div><div class="line">      };</div><div class="line">    };</div><div class="line">  };</div><div class="line">}</div><div class="line"></div><div class="line">var thunk = createThunkMiddleware();</div><div class="line">thunk.withExtraArgument = createThunkMiddleware;</div><div class="line"></div><div class="line">export default thunk;</div></pre></td></tr></table></figure>
+<p>  <code>thunk</code>&#x8FD4;&#x56DE;&#x7684;dispatch&#x51FD;&#x6570;&#x9996;&#x5148;&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;&#x4E00;&#x4E2A;function&#xFF0C;&#x5982;&#x679C;&#x4E3A;fcuntion&#x5219;&#x8C03;&#x7528;function&#xFF0C;<br>  &#x5426;&#x5219;&#x8C03;&#x7528;<code>createStoreShape</code>&#x4E2D;&#x7684;<code>dispatch</code>. &#x540C;&#x6837;&#x8FD9;&#x4E2A;action&#x4E5F;&#x53EF;&#x4EE5;&#x4F20;&#x5165;&#x4E00;&#x4E9B;&#x5176;&#x5B83;&#x53C2;&#x6570;&#xFF0C;<br>  &#x505A;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x903B;&#x8F91;&#x5904;&#x7406;&#x540E;&#xFF0C;&#x518D;&#x89E6;&#x53D1;<code>dispatch</code>.</p>
+</li>
+</ul>
+<ul>
+<li><code>compose</code> &#x63A5;&#x6536;&#x4E00;&#x5806;&#x51FD;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5F53;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x8FD4;&#x56DE;&#x7684;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x4F1A;&#x628A;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x4F20;&#x7ED9;&#x6700;&#x540E;&#x4E00;&#x51FD;&#x6570;&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x4F5C;&#x4E3A;&#x5012;&#x6570;&#x7B2C;&#x4E8C;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x8FD9;&#x6837;&#x4F9D;&#x6B21;&#x7C7B;&#x63A8;&#xFF0C;&#x4E00;&#x76F4;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x6267;&#x884C;&#x5B8C;&#xFF0C;&#x5E76;&#x628A;&#x7B2C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x505A;&#x4E3A;&#x5916;&#x5C42;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x8FD4;&#x56DE;&#x3002;</li>
+</ul>
+<h3 id="Redux-&#x4E2D;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x534F;&#x540C;"><a href="#Redux-&#x4E2D;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x534F;&#x540C;" class="headerlink" title="Redux &#x4E2D;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x534F;&#x540C;"></a>Redux &#x4E2D;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x534F;&#x540C;</h3><p><img src="/2016/09/17/Redux-React-redux/Redux.png" alt="Redux"></p>
+<p>&#x56F4;&#x7ED5;<code>createStore</code> &#x884D;&#x751F;&#x51FA;<code>combineReducers</code>,<code>bindActionCreators</code>,<code>applyMiddleware</code>,<code>compose</code> &#x4E00;&#x4E9B;&#x5DE5;&#x5177;&#xFF0C;&#x540C;&#x65F6;&#x8FD9;&#x4E9B;&#x5DE5;&#x5177;&#x4E5F;&#x5F88;&#x597D;&#x7684;&#x6269;&#x5C55;&#x4E86;<code>createStore</code>&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+          
+            <a class="post-next pager-item" href="/2016/06/30/hello-world/">
+              <strong class="article-nav-caption">Older</strong>
+              <p class="post-nav-title">Hello World</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+    <!-- 多说评论框 start -->
+      <div class="ds-thread" data-thread-key="_posts/Redux-React-redux.md" data-title="Redux &amp; React-redux （一）" data-url="http://yoursite.com/2016/09/17/Redux-React-redux/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+      <script type="text/javascript">
+      var duoshuoQuery = {short_name:"wayouliu"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+
+  
+
+
+</div>
+
+    </div>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动，搭载<a href="https://github.com/wayou/hexo-theme-gstyle">gstyle</a>主题</p>
+    <p>
+        &copy; 2016 zhiqing
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>
